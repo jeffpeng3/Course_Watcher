@@ -22,8 +22,11 @@ print(courseList)
 print(webhook)
 
 async def main():
+    print("a")
     async with ClientSession() as session:
+        print("b")
         while True:
+            print("c")
             for i in courseList:
                 print(end='.', flush=True)
                 payload['CourseNo'] = i
