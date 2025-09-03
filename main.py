@@ -9,7 +9,15 @@ payload = {
     'Language': 'zh',
     'Semester': '1141'
 }
+
+dc = {
+    "content": "123",
+    "embeds": None,
+    "attachments": []
+}
+
 courseList = loads(getenv("COURSES", "[]"))
+webhook = getenv("WEBHOOK", "")
 async def main():
     async with ClientSession() as session:
         while True:
@@ -20,7 +28,12 @@ async def main():
                         data = (await response.json())[0]
                         if int(data['Restrict2']) - data['ChooseStudent'] > 0:
                             print(data['CourseName'], data['CourseNo'])
-                        await sleep(0.3)
+                            if webhook:
+                                dc['content'] = f"{data['CourseName']} {data['CourseNo']}"
+                                async with session.post(webhook, json=dc, ssl=False) as r:
+                                    print(await r.text())
                 except Exception as e:
                     print("pass i because", e)
+                await sleep(0.3)
+                print(end='.', flush=True)
 run(main())
