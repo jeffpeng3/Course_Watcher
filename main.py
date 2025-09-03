@@ -22,11 +22,8 @@ print(courseList)
 print(webhook)
 
 async def main():
-    print("a")
     async with ClientSession() as session:
-        print("b")
         while True:
-            print("c")
             for i in courseList:
                 print(end='.', flush=True)
                 payload['CourseNo'] = i
@@ -42,8 +39,7 @@ async def main():
                 except Exception as e:
                     print("pass i because", e, flush=True)
                 await sleep(0.3)
+            print()
 
 
-print("z")
 run(main())
-print("x")
