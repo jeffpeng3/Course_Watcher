@@ -42,4 +42,8 @@ async def main():
                 except Exception as e:
                     print("pass i because", e, flush=True)
                 await sleep(0.3)
+
+
+print("z")
 run(main())
+print("x")
