@@ -20,10 +20,12 @@ courseList = loads(getenv("COURSES", "[]"))
 webhook = getenv("WEBHOOK", "")
 print(courseList)
 print(webhook)
+
 async def main():
     async with ClientSession() as session:
         while True:
             for i in courseList:
+                print(end='.', flush=True)
                 payload['CourseNo'] = i
                 try:
                     async with session.post(url, json=payload, ssl=False) as response:
@@ -37,5 +39,4 @@ async def main():
                 except Exception as e:
                     print("pass i because", e, flush=True)
                 await sleep(0.3)
-                print(end='.', flush=True)
 run(main())
