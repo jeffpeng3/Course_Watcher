@@ -18,6 +18,8 @@ dc = {
 
 courseList = loads(getenv("COURSES", "[]"))
 webhook = getenv("WEBHOOK", "")
+print(courseList)
+print(webhook)
 async def main():
     async with ClientSession() as session:
         while True:
