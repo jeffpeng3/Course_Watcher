@@ -1,7 +1,6 @@
 FROM python:3.12-alpine AS base
 FROM base AS builder
-COPY requirements.txt /requirements.txt
-RUN pip install --user -r /requirements.txt
+RUN pip install --user aiohttp
 
 FROM base
 # copy only the dependencies installation from the 1st stage image
