@@ -7,7 +7,7 @@ url = 'https://querycourse.ntust.edu.tw/querycourse/api/courses'
 payload = {
     'CourseNo': 'ET5003701',
     'Language': 'zh',
-    'Semester': '1141'
+    'Semester': '1142'
 }
 
 dc = {
